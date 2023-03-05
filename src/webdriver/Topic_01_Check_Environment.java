@@ -34,12 +34,12 @@ public class Topic_01_Check_Environment {
 //		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://www.facebook.com/");
+		driver.get("https://www.facebook.com/kieuyenvy612");
 	}
 
 	@Test
 	public void TC_01_Url() {
-		Assert.assertEquals(driver.getCurrentUrl(), "https://www.facebook.com/");
+		Assert.assertEquals(driver.getCurrentUrl(), "https://www.facebook.com/kieuyenvy612");
 	}
 
 	@Test
