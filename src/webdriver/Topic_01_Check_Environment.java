@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
@@ -32,7 +33,7 @@ public class Topic_01_Check_Environment {
 
 		driver = new ChromeDriver();
 //		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get("https://www.facebook.com/");
 	}
@@ -51,6 +52,47 @@ public class Topic_01_Check_Environment {
 	public void TC_03_Form() {
 		Assert.assertTrue(driver.findElement(By.xpath("//form[@data-testid='royal_login_form']")).isDisplayed());
 	}
+	
+	@Test
+	public void TC_04_Form() {
+		//text box email and password
+		Assert.assertTrue(driver.findElement(By.id("email")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.id("passContainer")).isDisplayed());
+		
+	}
+	@Test
+	public void TC_05_Form() {
+		//button Log in
+		Assert.assertTrue(driver.findElement(By.name("login")).isDisplayed());
+		
+		
+	}
+	 @Test
+	 public void TC_06_Form() throws InterruptedException {
+			//link Forgot Password
+			
+			 driver.findElement(By.linkText("Forgotten password?")).click();
+			 Thread.sleep(1000); 
+			
+		}
+	 @Test
+	 public void TC_07_CancelForgotPassword() throws InterruptedException {
+			//cancel password forgetting step
+			 driver.findElement(By.linkText("Cancel")).click();
+			 Thread.sleep(1000); 
+			
+		}
+	/* @Test
+	 public void TC_07_Form() throws InterruptedException {
+			//button Create new account
+		 
+		 driver.findElement(By.linkText("Create new account")).click();
+		Thread.sleep(1000); 
+		
+			
+			
+		}*/
+	
 
 	@AfterClass
 	public void afterClass() {
