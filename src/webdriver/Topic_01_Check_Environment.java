@@ -29,8 +29,8 @@ public class Topic_01_Check_Environment {
 			System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver");
 		}
 
-
-		driver = new ChromeDriver();
+//haiyentest
+		driver = new ChromeDriver(); 
 //		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
