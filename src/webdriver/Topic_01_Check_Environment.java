@@ -19,10 +19,7 @@ public class Topic_01_Check_Environment {
 	@BeforeClass
 	public void beforeClass() {
 //		if (osName.contains("Windows")) {
-//			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
-//		} else {
-//			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
-//		}
+
 		if (osName.contains("Windows")) {
 			System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
 		} else {
