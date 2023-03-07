@@ -29,6 +29,8 @@ public class Topic_01_Check_Environment {
 			System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver");
 		}
 //thaibinh push lan 2
+		
+//binh push lan 3
 
 		driver = new ChromeDriver();
 //		driver = new FirefoxDriver();
