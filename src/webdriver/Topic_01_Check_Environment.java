@@ -23,6 +23,7 @@ public class Topic_01_Check_Environment {
 //		} else {
 //			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
 //		}
+//		test
 		if (osName.contains("Windows")) {
 			System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
 		} else {
