@@ -51,6 +51,19 @@ public class Topic_01_Check_Environment {
 	public void TC_03_Form() {
 		Assert.assertTrue(driver.findElement(By.xpath("//form[@data-testid='royal_login_form']")).isDisplayed());
 	}
+	@Test
+	public void TC_04_Textbox1() {
+		Assert.assertTrue(driver.findElement(By.xpath("//input[@data-testid='royal_email']")).isDisplayed());
+	}
+	@Test
+	public void TC_05_Textbox2() {
+		Assert.assertTrue(driver.findElement(By.xpath("//input[@data-testid='royal_pass']")).isDisplayed());
+	}
+	@Test
+
+    public void TC_06_ButtonDangNhap() {
+	Assert.assertTrue(driver.findElement(By.xpath("//button[@data-testid='royal_login_button']")).isDisplayed());
+   }
 
 	@AfterClass
 	public void afterClass() {
