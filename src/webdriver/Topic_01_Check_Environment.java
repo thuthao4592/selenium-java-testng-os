@@ -23,7 +23,7 @@ public class Topic_01_Check_Environment {
 //		} else {
 //			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
 //		}
-		if (osName.contains("Windows10")) {
+		if (osName.contains("Windows")) {
 			System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
 		} else {
 			System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver");
@@ -57,8 +57,8 @@ public class Topic_01_Check_Environment {
 		Assert.assertTrue(driver.findElement(By.xpath("//form[@data-testid='royal_login_form']")).isDisplayed());
 	}
 
-//	@AfterClass
-//	public void afterClass() {
-//		driver.quit();
-//	}
+	@AfterClass
+	public void afterClass() {
+		driver.quit();
+	}
 }
