@@ -69,10 +69,11 @@ public class Topic_02_Selenium_Locator {
 	}	
 	
 	@Test
-	public void TC_07_CSS() {
+	public void TC_07_Css() {
+	//chay trang register
 	driver.get("https://demo.nopcommerce.com/register");
 	//1
-	driver.findElement(By.cssSelector("input#Firstname")).sendKeys("Selenium");
+	driver.findElement(By.cssSelector("input#FirstName")).sendKeys("Selenium");
 	//2
 	driver.findElement(By.cssSelector("input[id='LastName']")).sendKeys("Locator");
 	//3
@@ -81,9 +82,10 @@ public class Topic_02_Selenium_Locator {
 		
 	@Test
 	public void TC_08_XPath() {
+		//chay trang register
 		driver.get("https://demo.nopcommerce.com/register");
 		//1
-		driver.findElement(By.xpath("//input[@data-val-required='Email is required.siuekjm']")).sendKeys("Selenium");
+		driver.findElement(By.xpath("//input[@data-val-required='First name is required.']")).sendKeys("Selenium");
 		//2
 		driver.findElement(By.xpath("//input[@id='LastName']")).sendKeys("Locator");
 		//3
