@@ -1,5 +1,6 @@
 package webdriver;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -12,8 +13,11 @@ import org.testng.annotations.Test;
 
 public class Topic_06_WebElement_Exercise {
 	WebDriver driver;
+	Random rand;
+	String emailAddresss, firstName, lastName, password, fullName;
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
+	String emailAddress = "automation@gmail.net";
 	By emailTextbox = By.id("mail");
 	By ageUnder18Radio = By.cssSelector("#under_18"); 
 	By educationTextArea = By.cssSelector("#edu"); 
@@ -21,6 +25,7 @@ public class Topic_06_WebElement_Exercise {
 	By passwordTextbox = By.cssSelector("#disable_password");
 	By biographyTextArea = By.cssSelector("#bio");
 	By developmentCheckbox = By.cssSelector("#development");
+	
 	@BeforeClass
 	public void beforeClass() {
 		if (osName.contains("Windows")) {
@@ -28,13 +33,17 @@ public class Topic_06_WebElement_Exercise {
 		} else {
 			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
 		}
-
+		rand = new Random();
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		emailAddress = "automation" + rand.nextInt(9999) + "@gmail.com";
+		firstName = "Automation";
+		lastName = "FC";
+		fullName = firstName + " " + lastName;
+		password = "12345678";
 		}
-	
-	
-	//@Test
+		
+	@Test
 	public void TC_01_() {
 		driver.get("https://automationfc.github.io/basic-form/index.html");
 		//Textbox / TextArea nếu hiển thị thì nhập text vào và in ra console
@@ -69,7 +78,7 @@ public class Topic_06_WebElement_Exercise {
 		}
 	}	
 	
-	//@Test
+	@Test
 	public void TC_02_() {
 		driver.get("https://automationfc.github.io/basic-form/index.html");
 		//Textbox / TextArea nếu hiển thị thì nhập text vào và in ra console
@@ -94,7 +103,7 @@ public class Topic_06_WebElement_Exercise {
 		}				
 	}
 
-	//@Test
+	@Test
 	public void TC_03_() {
 		driver.get("https://automationfc.github.io/basic-form/index.html");
 		// Verify checkbox/ radio button are deselected
@@ -110,15 +119,7 @@ public class Topic_06_WebElement_Exercise {
 		Assert.assertTrue(driver.findElement(developmentCheckbox).isSelected());
 	}
 	
-	public void sleepInSecond(long timeInSecond) {
-		try {
-			Thread.sleep(timeInSecond * 1000);
-		} catch (InterruptedException e) {		
-			e.printStackTrace();
-		}	
-	}
-	
-	//@Test
+	@Test
 	public void TC_04_MailChimp(){
 		driver.get("https://login.mailchimp.com/signup/");
 		driver.findElement(By.id("email")).sendKeys("automation@gmail.com");
@@ -191,50 +192,102 @@ public class Topic_06_WebElement_Exercise {
 	}
 	
 	@Test
-	public void TC_05_Empty_Email_and_Password() {
+	public void Login_01_Empty_Email_and_Password() {
 		driver.get("http://live.techpanda.org/");
 		driver.findElement(By.cssSelector("div.footer a[title='My Account']")).click();
 		sleepInSecond(2);
-		driver.findElement(By.xpath("//span[text()='Login']")).click();
+		driver.findElement(By.id("send2")).click();
 		sleepInSecond(2);
 		Assert.assertEquals(driver.findElement(By.id("advice-required-entry-email")).getText(), "This is a required field.");
 		Assert.assertEquals(driver.findElement(By.id("advice-required-entry-pass")).getText(), "This is a required field.");		
 	}
 	
 	@Test
-	public void TC_06_Invalid_Email() {
+	public void Login_02_Invalid_Email() {
 		driver.get("http://live.techpanda.org/");
 		driver.findElement(By.cssSelector("div.footer a[title='My Account']")).click();
 		sleepInSecond(2);
-		driver.findElement(By.cssSelector("ul.form-list input[type='email']")).sendKeys("123434234@12312.123123");
-		driver.findElement(By.cssSelector("input[type='password']")).sendKeys("123456");
-		driver.findElement(By.xpath("//span[text()='Login']")).click();
+		driver.findElement(By.id("email")).sendKeys("123434234@12312.123123");
+		driver.findElement(By.id("pass")).sendKeys("123456");
+		driver.findElement(By.id("send2")).click();
 		sleepInSecond(2);
 		Assert.assertEquals(driver.findElement(By.id("advice-validate-email-email")).getText(), "Please enter a valid email address. For example johndoe@domain.com.");
 	}	
 	
 	@Test
-	public void TC_07_Incorrect_Email_and_Password() {
+	public void Login_03_Password_Less_Than_6_Chars() {
 		driver.get("http://live.techpanda.org/");
 		driver.findElement(By.cssSelector("div.footer a[title='My Account']")).click();
 		sleepInSecond(2);
-		driver.findElement(By.cssSelector("ul.form-list input[type='email']")).sendKeys("automation@gmail.com");
-		driver.findElement(By.cssSelector("input[type='password']")).sendKeys("123");
-		driver.findElement(By.xpath("//span[text()='Login']")).click();
+		driver.findElement(By.id("email")).sendKeys("automation@gmail.com");
+		driver.findElement(By.id("pass")).sendKeys("123");
+		driver.findElement(By.id("send2")).click();
 		sleepInSecond(2);
 		Assert.assertEquals(driver.findElement(By.id("advice-validate-password-pass")).getText(), "Please enter 6 or more characters without leading or trailing spaces.");
 	}	
 	
 	@Test
-	public void TC_07_Incorrect_Email_or_Password() {
+	public void Login_04_Incorrect_Email() {
 		driver.get("http://live.techpanda.org/");
 		driver.findElement(By.cssSelector("div.footer a[title='My Account']")).click();
 		sleepInSecond(2);
-		driver.findElement(By.cssSelector("ul.form-list input[type='email']")).sendKeys("automation@gmail.com");
-		driver.findElement(By.cssSelector("input[type='password']")).sendKeys("123123123");
-		driver.findElement(By.xpath("//span[text()='Login']")).click();
+		driver.findElement(By.id("email")).sendKeys(emailAddress);
+		driver.findElement(By.id("pass")).sendKeys("123456");
+		driver.findElement(By.id("send2")).click();
 		sleepInSecond(2);
 		Assert.assertEquals(driver.findElement(By.cssSelector("li.error-msg span")).getText(), "Invalid login or password.");
+	}
+	
+	@Test
+	public void Login_05_Create_New_Account() {
+		driver.get("http://live.techpanda.org/");
+		driver.findElement(By.cssSelector("div.footer a[title='My Account']")).click();
+		sleepInSecond(2);
+		driver.findElement(By.cssSelector("a[title='Create an Account']")).click();
+		sleepInSecond(2);
+		driver.findElement(By.id("firstname")).sendKeys(firstName);
+		driver.findElement(By.id("lastname")).sendKeys(lastName);
+		driver.findElement(By.id("email_address")).sendKeys(emailAddress);
+		driver.findElement(By.id("password")).sendKeys(password);
+		driver.findElement(By.id("confirmation")).sendKeys(password);
+		
+		driver.findElement(By.cssSelector("button[title='Register']")).click();
+		
+		Assert.assertEquals(driver.findElement(By.cssSelector("li.success-msg span")).getText(), "Thank you for registering with Main Website Store.");
+		
+		String contactInformationText = driver.findElement(By.xpath("//h3[text()='Contact Information']/parent::div/following-sibling::div/p")).getText();
+		System.out.println(contactInformationText);
+		
+		Assert.assertTrue(contactInformationText.contains(fullName));
+		Assert.assertTrue(contactInformationText.contains(emailAddress));
+		driver.findElement(By.xpath("//div[@class='account-cart-wrapper']//span[text()='Account']")).click();
+		driver.findElement(By.xpath("//a[@title='Log Out']")).click();
+		Assert.assertTrue(driver.findElement(By.xpath("//img[contains(@src,'logo.png')]")).isDisplayed());
+	}
+	
+	@Test
+	public void Login_06_Login_Valid_Infor() {
+		driver.get("http://live.techpanda.org/");
+		driver.findElement(By.cssSelector("div.footer a[title='My Account']")).click();
+		sleepInSecond(2);
+		driver.findElement(By.id("email")).sendKeys(emailAddress);
+		driver.findElement(By.id("pass")).sendKeys(password);
+		driver.findElement(By.id("send2")).click();
+		sleepInSecond(2);
+		
+		String contactInformationText = driver.findElement(By.xpath("//h3[text()='Contact Information']/parent::div/following-sibling::div/p")).getText();
+		System.out.println(contactInformationText);
+		
+		Assert.assertTrue(contactInformationText.contains(fullName));
+		Assert.assertTrue(contactInformationText.contains(emailAddress));		
+	}
+
+	public void sleepInSecond(long timeInSecond) {
+		try {
+			Thread.sleep(timeInSecond * 1000);
+		} catch (InterruptedException e) {		
+			e.printStackTrace();
+		}	
 	}
 	
 	@AfterClass
