@@ -9,5 +9,7 @@
 	<classpathentry kind="src" path="libraries"/>
 	<classpathentry kind="lib" path="libraries/selenium-server-standalone-3.141.59.jar"/>
 	<classpathentry kind="lib" path="libraries/testng-6.14.3.jar"/>
+	<classpathentry kind="lib" path="D:/autotest/cai dat/testng-6.14.3.jar"/>
+	<classpathentry kind="lib" path="D:/autotest/cai dat/selenium-server-4.8.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
