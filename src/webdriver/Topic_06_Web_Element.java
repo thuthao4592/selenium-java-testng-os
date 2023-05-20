@@ -52,9 +52,10 @@ public class Topic_06_Web_Element {
 		
 	}
 
-	//@Test
+	@Test
 	public void TC_01_displayed() {
-		driver.get("https://automationfc.github.io/basic-form/index.html");
+//		driver.get("https://automationfc.github.io/basic-form/index.html");
+		driver.get("http://google.com/");
 		if (driver.findElement(emailtextbox).isDisplayed()) {
 			driver.findElement(emailtextbox).sendKeys("Selenium Webdrive");
 			System.out.println("Email textbox is displayed");
