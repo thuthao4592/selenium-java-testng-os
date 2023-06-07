@@ -140,12 +140,7 @@ public class Topic_19_JavaScript_Executor {
 		Assert.assertEquals(getElementValidationMessage(confirmpasswordTextbox), "Please fill out this field.");
 		
 		sendkeyToElementByJS(passwordTextbox, "123456789");
-		
-		
-		
-		
-		
-		
+	
 	}
 
 	//@Test
