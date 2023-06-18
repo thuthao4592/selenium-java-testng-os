@@ -138,27 +138,6 @@ private void sleepInSecond(int i) {
 		
 	}
 
-	//	@Test
-	public void TC_03_Password_Less_Than_6_Chars1() {
-	}
-
-//	@Test
-	public void TC_04_Incorrect_Email_PassWord1() {
-		driver.get("http://live.techpanda.org/");
-		
-	}
-
-//	@Test
-	public void TC_05_Create_New_Account1() {
-		
-	}
-
-//	@Test
-	public void TC_06_Login_Valid_Info() {
-		driver.get("http://live.techpanda.org/");
-		
-	}
-
 	@AfterClass
 	public void afterClass() {
 //		driver.quit();
