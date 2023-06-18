@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Chạy 3 trình duyệt cùng lúc-->
+<suite parallel="tests" name="Suite" thread-count="3"> 
+
+<listeners>
+<listener class-name= "listener.ExtentReportListener" />
+</listeners>
+
+<!-- Global -->
+<parameter name = "environment" value = "live" /> 
+ 	 
+ <test name="Run on Firefox">
+ 	<!-- Local -->
+ 	<parameter name = "browser" value = "firefox" />
+    <classes>
+  
+	      <class name = "testng2.Topic_09_Listener" />
+     </classes>
+  </test> 
+  
+</suite> 

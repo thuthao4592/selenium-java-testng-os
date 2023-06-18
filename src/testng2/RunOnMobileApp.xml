@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name = "Mobile Application">
+ 
+ <test name="Run on Firefox">
+    <classes>
+         <class name = "facebook.mobileapp.Post01" />
+     </classes>
+  </test> 
+  
+</suite> 
